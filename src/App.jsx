@@ -22,14 +22,19 @@ function Header() {
         <a href="#about" className="hover:text-[#f4c45d] transition">ABOUT US</a>
       </nav>
 
+      {/* TRUE blended logo: transparent PNG, no square black background */}
       <motion.a
         href="#home"
-        className="absolute left-1/2 top-7 -translate-x-1/2 text-center logo-blend"
-        initial={{ opacity: 0, scale: .9, y: -15 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
+        className="absolute left-1/2 top-7 -translate-x-1/2 text-center"
+        initial={{ opacity: 0, scale: .92, y: -12 }}
+        animate={{ opacity: .82, scale: 1, y: 0 }}
         transition={{ duration: .9 }}
       >
-        <img src="/wematt-logo.jpg" alt="WEMATT Essentials" className="w-36 md:w-48 mx-auto opacity-70 mix-blend-screen" />
+        <img
+          src="/wematt-logo-transparent.png"
+          alt="WEMATT Essentials"
+          className="w-40 md:w-56 mx-auto logo-soft"
+        />
       </motion.a>
 
       <nav className="hidden md:flex gap-10 lg:gap-14 text-white/90 tracking-[.12em] text-sm font-semibold ml-auto">
@@ -83,15 +88,18 @@ function Hero() {
           </motion.a>
         </motion.div>
 
+        {/* TRUE blended product: transparent asset, no rectangle */}
         <motion.div
           className="relative hidden md:flex justify-center items-end min-h-[420px]"
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: .25 }}
         >
-          <motion.div
-            className="hero-product-blend"
-            animate={{ y: [0, -10, 0], opacity: [.86, 1, .86] }}
+          <motion.img
+            src="/images/hero-product-blended.png"
+            alt="WEMATT Renew Serum"
+            className="relative z-20 w-[390px] lg:w-[470px] object-contain product-soft"
+            animate={{ y: [0, -10, 0], opacity: [.88, 1, .88] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
@@ -102,11 +110,7 @@ function Hero() {
 
 function Benefit({ icon, title, text }) {
   return (
-    <motion.div
-      variants={fadeUp}
-      whileHover={{ y: -8 }}
-      className="text-center px-4"
-    >
+    <motion.div variants={fadeUp} whileHover={{ y: -8 }} className="text-center px-4">
       <div className="mx-auto mb-5 text-[#f0bb53] flex justify-center">{icon}</div>
       <h3 className="text-[#f0bb53] text-sm font-bold tracking-[.08em] uppercase">{title}</h3>
       <p className="mt-3 text-white/75 leading-6 text-sm">{text}</p>
@@ -133,10 +137,7 @@ function Benefits() {
 
 function BestSellerCard({ image, name, price }) {
   return (
-    <motion.div
-      whileHover={{ y: -10, scale: 1.015 }}
-      className="lux-card p-3 shimmer"
-    >
+    <motion.div whileHover={{ y: -10, scale: 1.015 }} className="lux-card p-3 shimmer">
       <div className="h-[175px] md:h-[190px] bg-black overflow-hidden photo-glow">
         <img src={image} alt={name} className="w-full h-full object-cover transition duration-700 hover:scale-110" />
       </div>
@@ -154,13 +155,7 @@ function BestSellers() {
     <section id="shop" className="min-h-[375px] bg-black px-8 lg:px-10 py-8 border-b panel-border">
       <h2 className="font-serif text-[#fff0b7] text-3xl md:text-4xl text-center font-bold">OUR BEST SELLERS</h2>
       <div className="gold-line h-[2px] w-28 mx-auto mt-4 mb-7" />
-      <motion.div
-        className="grid grid-cols-2 xl:grid-cols-4 gap-4"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: .2 }}
-        transition={{ staggerChildren: .1 }}
-      >
+      <motion.div className="grid grid-cols-2 xl:grid-cols-4 gap-4" initial="hidden" whileInView="show" viewport={{ once: true, amount: .2 }} transition={{ staggerChildren: .1 }}>
         {bestSellers.map(([image, name, price]) => (
           <motion.div variants={fadeUp} key={name}>
             <BestSellerCard image={image} name={name} price={price} />
@@ -174,29 +169,16 @@ function BestSellers() {
 function Philosophy() {
   return (
     <section id="story" className="grid md:grid-cols-2 bg-black border-b panel-border">
-      <motion.div
-        className="min-h-[250px] overflow-hidden photo-glow border-r panel-border"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
+      <motion.div className="min-h-[250px] overflow-hidden photo-glow border-r panel-border" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
         <img src="/images/philosophy-products.jpg" alt="WEMATT luxury products" className="w-full h-full object-cover transition duration-1000 hover:scale-105" />
       </motion.div>
-      <motion.div
-        className="p-10 lg:p-14 flex flex-col justify-center"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: .3 }}
-      >
+      <motion.div className="p-10 lg:p-14 flex flex-col justify-center" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: .3 }}>
         <h2 className="font-serif text-[#fff0b7] text-3xl lg:text-4xl leading-tight">THE WEMATT<br />PHILOSOPHY</h2>
         <div className="w-12 h-[2px] bg-[#c99028] mt-6 mb-7" />
         <p className="text-white/72 leading-7 text-sm max-w-sm">
           We blend the finest ingredients with cutting-edge science to deliver visible results and elevate your natural beauty.
         </p>
-        <a className="mt-8 w-fit border border-[#c99028] text-[#f0bb53] px-8 py-3 text-xs font-bold tracking-[.12em] hover:bg-[#c99028] hover:text-black transition">
-          LEARN MORE
-        </a>
+        <a className="mt-8 w-fit border border-[#c99028] text-[#f0bb53] px-8 py-3 text-xs font-bold tracking-[.12em] hover:bg-[#c99028] hover:text-black transition">LEARN MORE</a>
       </motion.div>
     </section>
   );
@@ -208,21 +190,13 @@ function Crafted() {
       <div className="min-h-[300px] overflow-hidden photo-glow border-r panel-border">
         <img src="/images/dropper.jpg" alt="Gold skincare dropper" className="w-full h-full object-cover transition duration-1000 hover:scale-105" />
       </div>
-      <motion.div
-        className="p-10 flex flex-col justify-center items-center text-center border-r panel-border"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: .3 }}
-      >
+      <motion.div className="p-10 flex flex-col justify-center items-center text-center border-r panel-border" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: .3 }}>
         <h2 className="font-serif text-[#fff0b7] text-3xl">CRAFTED FOR EXCELLENCE</h2>
         <div className="w-14 h-[2px] bg-[#c99028] my-7" />
         <p className="text-white/75 leading-8 max-w-sm">
           Every product is a blend of nature and innovation, designed to nourish, protect and reveal your most radiant self.
         </p>
-        <a className="mt-8 border border-[#c99028] text-[#f0bb53] px-9 py-3 text-xs tracking-[.12em] font-bold hover:bg-[#c99028] hover:text-black transition">
-          DISCOVER MORE
-        </a>
+        <a className="mt-8 border border-[#c99028] text-[#f0bb53] px-9 py-3 text-xs tracking-[.12em] font-bold hover:bg-[#c99028] hover:text-black transition">DISCOVER MORE</a>
       </motion.div>
       <div className="min-h-[300px] overflow-hidden photo-glow">
         <img src="/images/cream-large.jpg" alt="WEMATT luxury cream" className="w-full h-full object-cover transition duration-1000 hover:scale-105" />
@@ -235,7 +209,7 @@ function Club() {
   return (
     <section className="grid md:grid-cols-[.9fr_1.1fr] bg-[#050403] border-b panel-border">
       <div className="p-9 flex justify-center items-center border-r panel-border">
-        <img src="/wematt-logo.jpg" alt="WEMATT Essentials" className="w-64 drop-shadow-[0_0_35px_rgba(232,164,45,.3)]" />
+        <img src="/wematt-logo-transparent.png" alt="WEMATT Essentials" className="w-64 opacity-80" />
       </div>
       <div className="p-9 lg:p-12 flex flex-col justify-center">
         <h2 className="font-serif text-[#fff0b7] text-2xl lg:text-3xl">JOIN THE WEMATT CLUB</h2>
@@ -259,19 +233,15 @@ function Footer() {
   return (
     <footer className="bg-black px-8 lg:px-16 py-10">
       <div className="grid md:grid-cols-[1fr_2fr_.7fr] gap-10">
-        <img src="/wematt-logo.jpg" alt="WEMATT Essentials" className="w-56" />
-
+        <img src="/wematt-logo-transparent.png" alt="WEMATT Essentials" className="w-56 opacity-80" />
         <div className="grid sm:grid-cols-3 gap-8">
           {columns.map(([title, ...items]) => (
             <div key={title}>
               <h4 className="text-[#e1a13a] font-bold text-xs mb-4">{title}</h4>
-              {items.map((item) => (
-                <p key={item} className="text-white/65 text-xs mb-3">{item}</p>
-              ))}
+              {items.map((item) => <p key={item} className="text-white/65 text-xs mb-3">{item}</p>)}
             </div>
           ))}
         </div>
-
         <div>
           <h4 className="text-[#e1a13a] font-bold text-xs mb-5">FOLLOW US</h4>
           <div className="flex gap-5 text-[#e1a13a]">
