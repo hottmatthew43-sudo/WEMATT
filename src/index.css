@@ -139,3 +139,53 @@ body {
 @media (max-width: 1024px) {
   .gold-ring { width: 330px; height: 330px; }
 }
+
+
+/* FIX: blend logo and product image into the background environment */
+.logo-blend {
+  background: transparent;
+  filter: drop-shadow(0 0 26px rgba(232,164,45,.20));
+}
+
+.logo-blend img {
+  border-radius: 999px;
+  -webkit-mask-image: radial-gradient(circle at center, black 0 58%, rgba(0,0,0,.65) 67%, transparent 79%);
+  mask-image: radial-gradient(circle at center, black 0 58%, rgba(0,0,0,.65) 67%, transparent 79%);
+}
+
+.hero-product-blend {
+  position: relative;
+  z-index: 20;
+  width: min(470px, 86vw);
+  height: 470px;
+  background-image: url("/images/hero-product.jpg");
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: screen;
+  opacity: .92;
+  filter: contrast(1.08) saturate(1.2) drop-shadow(0 0 55px rgba(231,148,28,.42));
+  -webkit-mask-image:
+    radial-gradient(ellipse at center, black 0 45%, rgba(0,0,0,.78) 57%, transparent 74%);
+  mask-image:
+    radial-gradient(ellipse at center, black 0 45%, rgba(0,0,0,.78) 57%, transparent 74%);
+}
+
+.hero-product-blend::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 52% 76%, rgba(242,166,34,.26), transparent 46%);
+  mix-blend-mode: screen;
+  animation: shimmerSweep 4.7s ease-in-out infinite;
+}
+
+@media (max-width: 1200px) {
+  header nav {
+    gap: 2rem !important;
+    letter-spacing: .08em !important;
+  }
+
+  .logo-blend img {
+    width: 9.5rem !important;
+  }
+}

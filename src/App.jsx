@@ -24,12 +24,12 @@ function Header() {
 
       <motion.a
         href="#home"
-        className="absolute left-1/2 top-7 -translate-x-1/2 text-center"
+        className="absolute left-1/2 top-7 -translate-x-1/2 text-center logo-blend"
         initial={{ opacity: 0, scale: .9, y: -15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: .9 }}
       >
-        <img src="/wematt-logo.jpg" alt="WEMATT Essentials" className="w-48 md:w-64 mx-auto drop-shadow-[0_0_30px_rgba(232,164,45,.35)]" />
+        <img src="/wematt-logo.jpg" alt="WEMATT Essentials" className="w-36 md:w-48 mx-auto opacity-70 mix-blend-screen" />
       </motion.a>
 
       <nav className="hidden md:flex gap-10 lg:gap-14 text-white/90 tracking-[.12em] text-sm font-semibold ml-auto">
@@ -89,11 +89,9 @@ function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: .25 }}
         >
-          <motion.img
-            src="/images/hero-product.jpg"
-            alt="WEMATT Renew Serum"
-            className="relative z-20 w-[390px] lg:w-[470px] object-contain drop-shadow-[0_0_55px_rgba(231,148,28,.45)] shimmer"
-            animate={{ y: [0, -10, 0] }}
+          <motion.div
+            className="hero-product-blend"
+            animate={{ y: [0, -10, 0], opacity: [.86, 1, .86] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
