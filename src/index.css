@@ -2,5 +2,140 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-body { background: #030201; }
+:root {
+  --gold: #c99028;
+  --gold2: #f6d273;
+  --gold3: #7a4d12;
+  --cream: #fff0b7;
+  --black: #030201;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #030201;
+  color: #fff;
+  font-family: Inter, sans-serif;
+}
+
+.gold-title {
+  background: linear-gradient(90deg, #fff7d1 0%, #fff 28%, #d9952d 62%, #f4d170 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-line {
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent);
+}
+
+.panel-border {
+  border-color: rgba(201, 144, 40, .58);
+}
+
+.hero-atmosphere {
+  background:
+    radial-gradient(circle at 64% 50%, rgba(245, 168, 38, .20), transparent 26%),
+    radial-gradient(circle at 65% 86%, rgba(245, 168, 38, .18), transparent 18%),
+    linear-gradient(90deg, #020201 0%, #050403 45%, #0b0702 100%);
+}
+
+.gold-ring {
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  border: 2px solid rgba(231, 155, 28, .85);
+  border-radius: 999px;
+  box-shadow:
+    0 0 22px rgba(255, 177, 44, .7),
+    inset 0 0 18px rgba(255, 177, 44, .32);
+  filter: drop-shadow(0 0 14px rgba(255, 177, 44, .45));
+}
+
+.water-splash {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/water-gold-hero.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  opacity: .68;
+  mix-blend-mode: screen;
+  filter: saturate(1.25) contrast(1.1);
+  mask-image: radial-gradient(circle at 62% 67%, black 0%, black 38%, transparent 68%);
+}
+
+.water-ripple {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -8%;
+  height: 34%;
+  background:
+    repeating-radial-gradient(ellipse at 63% 18%, rgba(255, 187, 49, .55) 0 1px, transparent 2px 21px),
+    linear-gradient(180deg, transparent, rgba(224, 148, 23, .18), transparent);
+  opacity: .55;
+  transform-origin: center;
+  animation: rippleMove 5.5s ease-in-out infinite;
+  filter: blur(.2px);
+}
+
+.spark-field {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 198, 78, .85) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(255, 198, 78, .45) 0 1px, transparent 1.8px);
+  background-size: 52px 52px, 37px 37px;
+  background-position: 0 0, 11px 19px;
+  opacity: .22;
+  animation: sparkDrift 18s linear infinite;
+  mask-image: radial-gradient(circle at 64% 58%, black 0%, black 42%, transparent 72%);
+}
+
+.lux-card {
+  background: linear-gradient(180deg, rgba(22, 14, 3, .92), rgba(2, 2, 1, .98));
+  border: 1px solid rgba(201, 144, 40, .58);
+}
+
+.photo-glow {
+  box-shadow: inset 0 0 40px rgba(0,0,0,.55), 0 0 28px rgba(201, 144, 40, .10);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-140%) skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 232, 155, .22), transparent);
+  animation: shimmerSweep 4.7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%, 52% { transform: translateX(-140%) skewX(-18deg); }
+  100% { transform: translateX(140%) skewX(-18deg); }
+}
+
+@keyframes rippleMove {
+  0%, 100% { transform: translateY(0) scaleX(1); opacity: .45; }
+  50% { transform: translateY(-10px) scaleX(1.04); opacity: .72; }
+}
+
+@keyframes sparkDrift {
+  to { background-position: 180px 90px, 130px 70px; }
+}
+
+@media (max-width: 1024px) {
+  .gold-ring { width: 330px; height: 330px; }
+}
